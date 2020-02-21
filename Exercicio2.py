@@ -1,5 +1,10 @@
 def transform_list(cpf):
-    return [int(i) for i in cpf]
+    try:
+        cpf_in_list = [int(i) for i in cpf]
+        return cpf_in_list
+    except ValueError:
+        print("Por favor, insira apenas números, sem espaçamento ou pontuações")
+        return []
 
 
 def num_verif(cpf_in_list, times):
@@ -15,8 +20,7 @@ def num_verif(cpf_in_list, times):
     return verif_number
 
 
-def valida(cpf):
-    cpf_in_list = transform_list(cpf)
+def valida(cpf_in_list):
     copia = cpf_in_list[:-2]
     verif_num_1 = num_verif(copia, 9)
     copia.append(verif_num_1)
@@ -28,5 +32,12 @@ def valida(cpf):
     return False
 
 
-cpf = input("CPF: ")
-valida(cpf)
+while True:
+    cpf = input("CPF: ")
+    cpf_in_list = transform_list(cpf)
+    if cpf_in_list != []:
+        if len(cpf_in_list) == 11:
+            break
+        print("Favor inserir 11 números")
+
+valida(cpf_in_list)
