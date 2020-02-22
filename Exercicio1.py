@@ -1,7 +1,7 @@
 from random import *
 
 
-# jogada simples de dados, que retorna a soma, e se são iguais
+# jogada simples de dados, que retorna a soma, e se sao iguais
 def throw_dices():
     double = False
     a = randint(1,6)
@@ -27,32 +27,32 @@ def player_move():
         index += 1
         # quebra de funcao ao nao serem duplas, ou seja, jogada legal
         if not double:
-            print(f"Jogada concluída! Por favor mova {movement} casas")
+            print(f"Jogada concluida! Por favor mova {movement} casas")
             return movement, False, index
         print("Uma dupla! Com isso, você tem direito a mais uma jogada de dados")
     # chegando aqui, while acaba por conta de index e nao double, ou seja, foram 3 duplas, jogada ilegal
-    print("Uh oh... Você tirou três duplas! Vá para a prisão!!")
+    print("Uh oh... Você tirou tres duplas! Va para a prisao!!")
     return 0, True, index
 
 
 # jogada para escapar da prisao caso parametro prision_try seja true
 def prison_escape(money):
-    print("Você está na prisão. Para sair, consiga uma dupla nos dados. Você tem 3 tentativas.")
+    print("Você esta na prisão. Para sair, consiga uma dupla nos dados. Você tem 3 tentativas.")
     # 3 tentativas para escapar
     for index in range(0,3):
         print(f"Tentativa N° {index+1}:")
         movement, double = throw_dices()
         # condicao de escape encontrada, retornando movimento dos ultimos dados e diminuindo dinheiro em 50
         if double:
-            print(f"Parabéns, uma dupla!! Saia da prisão e ande {movement} casas! Mas antes, pague 50")
+            print(f"Parabens, uma dupla!! Saia da prisao e ande {movement} casas! Mas antes, pague 50")
             return movement, False, money - 50
-    print("Nenhuma dupla... Tente novamente na próxima rodada")
+    print("Nenhuma dupla... Tente novamente na proxima rodada")
     return 0, True, money
 
 
 # decide se esta na prisao ou nao, e resolve os casos
 def default_move(piece, prison_try, money):
-    print(f"É a vez de {piece}")
+    print(f"Vez de {piece}")
     if not prison_try:
         play = player_move()
         prison_try = play[1]

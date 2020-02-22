@@ -8,6 +8,8 @@ def verify(string):
         # porem, se desejado, pode-se contar ate o final
         # apagando assim este if
         if count > 3:
+            # poderia colocar um print para menos de 3 interrogacoes, mas criaria ifs desnecessarios
+            print("Tem mais de 3 interrogacoes entre numeros que somados sao maiores que 10")
             break
     return count
 
@@ -58,11 +60,11 @@ def question_mark(string):
             True
 
         count += 1
-
+    # retorno final, dizendo se a string foi aceita ou nao
     return boolean
 
 
-if question_mark(input()):
-    print("OK")
+if question_mark(input("Digite a string a ser testada: ")):
+    print("String aceita, retornando True")
 else:
-    print("not OK")
+    print("False")
