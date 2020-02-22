@@ -64,5 +64,13 @@ def default_move(piece, prison_try, money):
     return piece, prison_try, money, play[0]
 
 
-print(default_move("Teste Prisioneiro", True, 500))
-print(default_move("Teste Standard", False, 500))
+count = 1
+print("Bem vindo! Digite exit para sair, ou enter para iniciar uma nova rodada")
+while True:
+    command = input(f"Rodada {count}: ")
+    if command.lower() == "exit":
+        break
+    default_move("Teste Prisioneiro", True, 500)
+    default_move("Teste Standard", False, 500)
+
+    count += 1
